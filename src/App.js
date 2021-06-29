@@ -36,12 +36,28 @@ function App() {
     setRest(restOfContacts);
   }
 
+  function sortName() {
+    let nameList = [...list];
+    nameList.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+      // if (a.name < b.name) {
+      //   return -1;
+      // }
+      // if (b.name < a.name) {
+      //   return 1;
+      // }
+      // return 0;
+    });
+    setList(nameList);
+  }
+
   console.log(list);
   return (
     <div className="App">
       <table>
         <h2>IronContact</h2>
         <button onClick={addRandomContact}>Add Random Contact</button>
+        <button onClick={sortName}>Sort by name ▲</button>
         <tr>
           <th>Picture</th>
           <th>Name</th>
