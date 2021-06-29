@@ -8,7 +8,7 @@ function App() {
   const [rest, setRest] = useState(contacts);
 
   function displayList() {
-    return list.map((contact) => {
+    return list.map((contact, i) => {
       return (
         <tr>
           <td>
@@ -19,6 +19,9 @@ function App() {
           </td>
           <td>
             <h5>{contact.popularity.toFixed(2)}</h5>
+          </td>
+          <td>
+            <button onClick={() => deleteName(i)}>Delete</button>
           </td>
         </tr>
       );
@@ -55,7 +58,11 @@ function App() {
     let popularList = [...list].sort((a, b) => b.popularity - a.popularity);
     setList(popularList);
   }
-
+  function deleteName(i) {
+    let copyOfList = [...list];
+    copyOfList.splice(i, 1);
+    setList(copyOfList);
+  }
   console.log(list);
   return (
     <div className="App">
