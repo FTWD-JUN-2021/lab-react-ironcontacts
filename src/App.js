@@ -51,6 +51,11 @@ function App() {
     setList(nameList);
   }
 
+  function sortPopularity() {
+    let popularList = [...list].sort((a, b) => b.popularity - a.popularity);
+    setList(popularList);
+  }
+
   console.log(list);
   return (
     <div className="App">
@@ -58,6 +63,7 @@ function App() {
         <h2>IronContact</h2>
         <button onClick={addRandomContact}>Add Random Contact</button>
         <button onClick={sortName}>Sort by name ▲</button>
+        <button onClick={sortPopularity}>Sort by popularity ▼</button>
         <tr>
           <th>Picture</th>
           <th>Name</th>
